@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Unduh Media</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="leaf" viewBox="0 0 100 100"><path d="M50 2 58 22 74 14 70 36 92 32 80 50 98 58 72 64 76 84 56 74 52 98H48L44 74 24 84 28 64 2 58 20 50 8 32 30 36 26 14 42 22Z"/></symbol>
+</defs></svg>
+
+<div class="scene" aria-hidden="true">
+  <svg class="mount m1" viewBox="0 0 400 200" preserveAspectRatio="none"><path d="M0 200 0 150 90 120 160 60 200 20 240 70 300 110 400 140V200Z"/></svg>
+  <svg class="mount m2" viewBox="0 0 400 200" preserveAspectRatio="none"><path d="M0 200V140L80 100 140 130 220 60 270 30 330 90 400 120V200Z"/></svg>
+  <div class="fog f1"></div><div class="fog f2"></div>
+  <div class="water"></div>
+  <svg class="torii" viewBox="0 0 120 100"><g fill="#4a2326"><rect x="2" y="12" width="116" height="7" rx="2"/><rect x="12" y="28" width="96" height="5"/><rect x="24" y="12" width="8" height="88"/><rect x="88" y="12" width="8" height="88"/></g></svg>
+  <svg class="branch" id="branch" viewBox="0 0 400 300"></svg>
+  <svg class="branch br" id="branchR" viewBox="0 0 300 220"></svg>
+  <div id="falling"></div>
+</div>
+
+<main>
+  <section id="home" class="screen active">
+    <form id="form" class="stack">
+      <label class="field">
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#8a1c1c" stroke-width="2" stroke-linecap="round"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg>
+        <input id="url" type="url" inputmode="url" placeholder="Tempel URL di sini" autocomplete="off" required>
+      </label>
+      <button class="go" type="submit"><span>PROSES</span><b>→</b></button>
+      <p id="error" class="error" role="alert"></p>
+    </form>
+    <div class="platforms">
+      <div class="rule"><span>PLATFORM POPULER &amp; SITUS LAINNYA</span></div>
+      <ul>
+        <li><svg viewBox="0 0 48 34"><rect width="48" height="34" rx="9" fill="#f00"/><path d="M19 9v16l14-8z" fill="#fff"/></svg>YouTube</li>
+        <li><svg viewBox="0 0 40 40"><path d="M27 6c.5 4 3 7 7 7v5c-3 0-5-1-7-2v10a10 10 0 1 1-10-10v5a5 5 0 1 0 5 5V6z" fill="#111"/></svg>TikTok</li>
+        <li><svg viewBox="0 0 40 40"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#fd5"/><stop offset=".5" stop-color="#ff543e"/><stop offset="1" stop-color="#c837ab"/></linearGradient></defs><rect width="40" height="40" rx="11" fill="url(#ig)"/><rect x="9" y="9" width="22" height="22" rx="7" fill="none" stroke="#fff" stroke-width="3"/><circle cx="20" cy="20" r="5" fill="none" stroke="#fff" stroke-width="3"/></svg>Instagram</li>
+        <li><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="20" fill="#1db954"/><path d="M9 15c8-2 16-1 22 3M10 22c7-2 13-1 18 2M11 28c5-1 9-1 13 1" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/></svg>Spotify</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="loading" class="screen">
+    <div class="bar"><span id="urlShown"></span></div>
+    <div class="bar dark">MEMPROSES...</div>
+    <div class="skeleton"><i></i></div>
+    <p id="status" class="status">Mengambil konten...</p>
+  </section>
+
+  <section id="result" class="screen">
+    <div class="bar"><span id="urlShown2"></span><button id="reset" aria-label="Kembali">✕</button></div>
+    <div class="card">
+      <div class="stage" id="stage">
+        <span class="count" id="count"></span>
+        <button class="nav prev" id="prev" aria-label="Sebelumnya">‹</button>
+        <button class="nav next" id="next" aria-label="Berikutnya">›</button>
+      </div>
+      <h2 id="title"></h2>
+      <p id="note" class="note"></p>
+      <a id="pdf" class="pdf" href="#"><span>SIMPAN SEBAGAI PDF (GALERI)<small id="pages"></small></span>
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="1.8"><path d="M6 2h9l5 5v15H6z"/><path d="M15 2v5h5M9 14h8M9 18h8"/></svg></a>
+      <ul id="list" class="list"></ul>
+    </div>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>

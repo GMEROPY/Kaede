@@ -1,0 +1,84 @@
+:root{--ink:#6e0f12;--red:#c8141b;--paper:#fbeae6;--line:#8a1c1c;--text:#2a1a1a}
+*{box-sizing:border-box;margin:0}
+html,body{min-height:100%}
+body{font-family:Inter,system-ui,sans-serif;color:var(--text);background:linear-gradient(#fbe9e6,#f6d9d5 55%,#fbeae7);overflow-x:hidden}
+.scene{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.mount{position:absolute;right:-5%;width:75%;height:26%;fill:#cfc0cf;opacity:.5}
+.m1{top:34%}.m2{bottom:14%;height:24%;width:80%}
+.water{position:absolute;left:0;right:0;bottom:0;height:13%;background:linear-gradient(#f3dcd9,#e6bcbd)}
+.torii{position:absolute;left:3%;bottom:11%;width:26%;max-width:150px;opacity:.85}
+.branch{position:absolute;top:-10px;left:-20px;width:min(95vw,520px)}
+.branch.br{top:auto;left:auto;right:-30px;bottom:-30px;width:min(60vw,320px);transform:scaleX(-1)}
+.branch use{fill:#cf1520}
+#falling i{position:absolute;top:-30px;width:var(--s,18px);height:var(--s,18px);perspective:120px;animation:fall linear infinite;opacity:.85;will-change:transform}
+#falling svg{width:100%;height:100%;fill:#d6212b;animation:flutter 2.8s ease-in-out infinite alternate}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(360deg)}}
+main{position:relative;max-width:480px;min-height:100vh;margin:auto;padding:0 22px}
+.screen{display:none;min-height:100vh;flex-direction:column;justify-content:center;padding:40px 0}
+.screen.active{display:flex;animation:in .5s ease}
+@keyframes in{from{opacity:0}}
+.stack{display:flex;flex-direction:column;gap:18px}
+.field{display:flex;align-items:center;gap:14px;padding:0 22px;height:68px;border-radius:24px;background:rgba(255,248,246,.75);border:1px solid #ecc9c8;box-shadow:0 6px 18px rgba(160,60,60,.08)}
+.field input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:18px;outline:0;color:var(--text)}
+.field:focus-within{border-color:var(--line)}
+.go{height:62px;border-radius:24px;border:2px solid var(--line);background:rgba(250,225,222,.6);color:var(--ink);font:700 24px "Cormorant Garamond",serif;letter-spacing:.14em;display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer}
+.go b{position:absolute;right:30px;font-weight:400}
+.go:hover,.go:focus-visible{background:var(--ink);color:#fff}
+.error{min-height:20px;color:#a01218;font-size:14px;text-align:center}
+.platforms{margin-top:14px}
+.rule{display:flex;align-items:center;gap:14px;font-size:12px;letter-spacing:.3em;color:#444}
+.rule:before,.rule:after{content:"";flex:1;height:1px;background:#d8b8b8}
+.platforms ul{list-style:none;padding:0;display:flex;justify-content:space-around;margin-top:22px}
+.platforms li{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:15px}
+.platforms svg{height:40px;width:auto}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:54px;padding:0 16px;border:1.5px solid #333;background:#fbf8f5;margin-bottom:14px}
+.bar span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:16px}
+.bar.dark{background:#2b2b2b;color:#fff;justify-content:center;letter-spacing:.12em;font-size:15px}
+.bar button{border:0;background:none;font-size:20px;cursor:pointer}
+.skeleton{height:300px;border:1.5px solid #333;background:#fbf8f5;position:relative;overflow:hidden;margin-top:6px}
+.skeleton i{position:absolute;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(200,20,27,.18),transparent);animation:scan 1.6s ease-in-out infinite}
+@keyframes scan{from{top:-60px}to{top:100%}}
+.status{text-align:center;margin-top:28px;font-size:18px}
+.card{border:1.5px solid #333;background:#fbf8f5}
+.stage{position:relative;background:#111;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.stage img,.stage video{width:100%;height:100%;object-fit:contain}
+.count{position:absolute;top:12px;left:50%;transform:translateX(-50%);background:rgba(20,30,30,.75);color:#fff;padding:3px 14px;border-radius:99px;font-size:14px;z-index:2}
+.nav{position:absolute;top:50%;width:42px;height:42px;margin-top:-21px;border-radius:50%;border:0;background:rgba(30,40,40,.75);color:#fff;font-size:26px;cursor:pointer;z-index:2}
+.prev{left:10px}.next{right:10px}
+h2{font-size:20px;line-height:1.35;text-transform:uppercase;padding:22px 20px 18px;border-bottom:1px solid #333;margin:0 20px}
+.note{margin:12px 20px 0;font-size:14px;color:#8a1c1c}
+.pdf{display:flex;justify-content:space-between;align-items:center;margin:18px 20px 0;padding:16px 20px;background:#151515;color:#fff;text-decoration:none;font-size:17px;letter-spacing:.06em}
+.pdf small{display:block;font-size:13px;letter-spacing:0;opacity:.7;margin-top:2px}
+.list{list-style:none;padding:0 20px 8px}
+.list a{display:flex;justify-content:space-between;padding:20px 16px;border-bottom:1px solid #333;color:inherit;text-decoration:none;font-size:19px}
+.list a:hover{background:#f4e4e1}
+.list b{font-weight:500;font-size:16px;letter-spacing:.06em}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+
+/* ---- animasi hidup (hanya transform/opacity agar ringan) ---- */
+.scene{--px:0;--py:0}
+.mount,.torii,.branch{will-change:transform}
+.m1{translate:calc(var(--px)*8px) calc(var(--py)*4px)}
+.m2{translate:calc(var(--px)*14px) calc(var(--py)*6px)}
+.torii{translate:calc(var(--px)*22px) calc(var(--py)*8px)}
+.branch{translate:calc(var(--px)*-26px) calc(var(--py)*-14px);transform-origin:0 0;animation:sway 7s ease-in-out infinite alternate}
+.branch.br{translate:calc(var(--px)*-34px) calc(var(--py)*-14px);transform-origin:50% 100%;animation:swayR 9s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.8deg)}}
+@keyframes swayR{from{transform:scaleX(-1) rotate(-1.5deg)}to{transform:scaleX(-1) rotate(1.5deg)}}
+@keyframes flutter{from{transform:rotateY(0) rotate(-25deg)}to{transform:rotateY(180deg) rotate(30deg)}}
+.fog{position:absolute;left:-30%;width:160%;height:22%;background:radial-gradient(ellipse at center,rgba(255,255,255,.6),transparent 68%);opacity:.7;animation:drift 38s ease-in-out infinite alternate;will-change:transform}
+.f1{top:36%}.f2{bottom:17%;animation-duration:56s;animation-direction:alternate-reverse}
+@keyframes drift{from{transform:translateX(-9%)}to{transform:translateX(9%)}}
+.water{overflow:hidden}
+.water:before{content:"";position:absolute;inset:0 -20%;background:repeating-linear-gradient(180deg,transparent 0 11px,rgba(255,255,255,.55) 11px 12px);-webkit-mask:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);mask:linear-gradient(90deg,transparent,#000 30%,#000 70%,transparent);opacity:.45;animation:ripple 7s ease-in-out infinite alternate}
+@keyframes ripple{from{transform:translateX(-6%) scaleY(1)}to{transform:translateX(6%) scaleY(1.25)}}
+.go{overflow:hidden;transition:background .25s,color .25s,transform .15s}
+.go:active{transform:scale(.98)}
+.go b{transition:transform .25s}.go:hover b{transform:translateX(6px)}
+.ripple{position:absolute;width:20px;height:20px;margin:-10px;border-radius:50%;background:rgba(200,20,27,.35);transform:scale(0);animation:rp .65s ease-out forwards;pointer-events:none}
+@keyframes rp{to{transform:scale(18);opacity:0}}
+.stage img,.stage video{animation:slideIn .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes slideIn{from{opacity:0;transform:translateX(var(--from,0))}}
+.field{transition:border-color .25s,box-shadow .25s}
+.field:focus-within{box-shadow:0 8px 26px rgba(200,20,27,.18)}
+@media(prefers-reduced-motion:reduce){.scene{--px:0!important;--py:0!important}}
